@@ -24,7 +24,7 @@ func newRouter() *httprouter.Router {
 	// 	log.Fatal("Error loading .env file")
 	// }
 	
-	ytApiKey := os.Getenv("APIKEY"); if  ytApiKey == "" {
+	ytApiKey := os.Getenv("ytAPIKey"); if  ytApiKey == "" {
 		log.Fatal("youtube API key not provided")
 	}
 
