@@ -7,7 +7,7 @@ FROM golang:1.17 as builder
 WORKDIR /youtube-api
 COPY --from=root-certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -mod=vendor -o ./youtube-stats ./app/./...
+RUN go mod vendor && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -mod=vendor -o ./youtube-stats ./app/./...
 
 FROM scratch as final
 COPY --from=root-certs /etc/passwd /etc/passwd
